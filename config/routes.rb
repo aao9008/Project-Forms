@@ -11,4 +11,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  # Create the :users resource, use only :new and :create
+  resource :users, only: [ :new, :create ]
 end
