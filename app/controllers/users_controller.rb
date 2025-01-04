@@ -4,6 +4,14 @@ class UsersController < ApplicationController
   end
 
   def create
-    # Code for creating a new user will go here
+    @user = User.new(username: params[:user][:username], email: params[:user][:email], password: params[:user][:password])
+
+    if @user.save
+      redirect_to new_user_path
+    else
+      # Log the validation errors
+      Rails.logger.debug @user.errors.full_messages
+      render :new, status: :unprocessable_entity
+    end
   end
 end
