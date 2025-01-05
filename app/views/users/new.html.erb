@@ -3,20 +3,33 @@
 
     <div>
         <label for="username">Username</label>
-        <input type="text" name="user[username]" id="username" autocomplete="new-username">
+        <input type="text" name="user[username]" id="username" autocomplete="new-username" value=<%= @user.username %>>
     </div>
 
     <div>
         <label for="email">Email</label>
-        <input type="email" name="user[email]" id="email">
+        <input type="email" name="user[email]" id="email" value=<%= @user.email %>>
     </div>
 
     <div>
         <label for="password">Password</label>
-        <input type="password" name="user[password]" id="password" autocomplete="new-password">
+        <input type="password" name="user[password]" id="password" autocomplete="new-password" value=<%= @user.password %>>
     </div>
 
     <div>
         <button type=submit>Create User</button>
     </div>
+
+    <% if flash[:error] %>
+        <div class="alert alert-danger">
+            <%= flash[:error] %>
+        </div>
+    <% end %>
+
+    <% if flash[:success] %>
+        <div class="alert alert-success">
+            <%= flash[:success] %>
+        </div>
+    <% end %>
+
 </form>
