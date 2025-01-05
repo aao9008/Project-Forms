@@ -24,6 +24,16 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = User.find(params[:id])
+
+    if @user.update(user_params)
+      flash[:success] = "User details have been updated!"
+      redirect_to edit_user_path
+    else
+      Rails.logger.debug @user.errors.full_messages
+      flash.now[:error] = "Rats! Fix your mistakes, please."
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   private
