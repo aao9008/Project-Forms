@@ -17,4 +17,22 @@
     <div>
         <%= form.button %>
     </div>
+
+     <% if flash[:error] %>
+        <div class="alert alert-danger">
+            <%= flash[:error] %>
+        </div>
+
+        <ul>
+             <% @user.errors.full_messages.each do |error| %>
+                <li> <%= error %> </li>
+            <% end %>
+        </ul>
+    <% end %>
+
+    <% if flash[:success] %>
+        <div class="alert alert-success">
+            <%= flash[:success] %>
+        </div>
+    <% end %>
 <% end %>
