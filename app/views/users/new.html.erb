@@ -35,7 +35,7 @@
 
 </form>
 -->
-
+<!--
 <%= form_with(url: "/users", method: "post") do %>
     <div>
         <%= label_tag(:username)%>
@@ -54,6 +54,40 @@
 
     <div>
         <%= button_tag("Create User") %>
+    </div>
+
+    <% if flash[:error] %>
+        <div class="alert alert-danger">
+            <%= flash[:error] %>
+        </div>
+    <% end %>
+
+    <% if flash[:success] %>
+        <div class="alert alert-success">
+            <%= flash[:success] %>
+        </div>
+    <% end %>
+<% end %>
+-->
+
+<%= form_with model: @user do |form| %>
+    <div>
+        <%= form.label :username %>
+        <%= form.text_field :username, autocomplete: "new-username", placeholder: "Your username here"%>
+    </div>
+
+    <div>
+        <%= form.label :email %>
+        <%= form.email_field :email, placeholder: "example@example.com" %>
+    </div>
+
+    <div>
+        <%= form.label :password %>
+        <%= form.password_field :password, autocomplete: "new-password" %>
+    </div>
+
+    <div>
+        <%= form.button %>
     </div>
 
     <% if flash[:error] %>
